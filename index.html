@@ -122,9 +122,18 @@
     <label>البريد الإلكتروني</label>
     <input type="email" name="email" required>
 
-    <label>صورة بطاقة الطالب</label>
-    <input type="file" name="student_card" accept="image/*" required>
-
+    <label>رابط صورة بطاقة الطالب (Google Drive)</label>
+<input 
+  type="url" 
+  name="student_card_link" 
+  placeholder="https://drive.google.com/..." 
+  required
+>
+<div class="note">
+يرجى رفع صورة بطاقة الطالب على Google Drive ثم اختيار
+"Anyone with the link"
+ووضع الرابط هنا.
+</div>
     <button type="submit">إرسال طلب الانخراط</button>
 
     <div class="note">
@@ -159,4 +168,5 @@
 </body>
 
 </html>
+
 
