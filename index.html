@@ -152,7 +152,7 @@
     e.preventDefault();
 
     emailjs.sendForm(
-      "service_027g3tc",      // Service ID
+      "service_uu9ukvs",      // Service ID
       "template_06facfs",     // Template ID (إيميل النادي)
       this
     ).then(function() {
@@ -167,32 +167,44 @@
 
 <script>
 (function(){
-  emailjs.init("P4WRU0KWI--zd-X6Y"); // ✅ Public Key الصحيح
+  emailjs.init("PW4RUOKWI--zd-X6Y"); // Public Key
 })();
 
 document.getElementById("quasarForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // مهم جدًا
+  e.preventDefault();
 
+  const form = this;
+
+  // 1️⃣ إرسال الطلب إلى النادي
   emailjs.sendForm(
-    "service_027g3tc",      // Service ID
-    "template_06facfs",     // Template ID
-    this
-  )
-  .then(function() {
-    alert("✅ تم إرسال طلبك بنجاح، سيتم التواصل معك قريبًا");
-    document.getElementById("quasarForm").reset();
-  })
-  .catch(function(error) {
-    alert("❌ خطأ تقني: " + error.text);
-    console.error("EmailJS Error:", error);
+    "service_uu9ukvs",      // Service ID
+    "template_06facfs",     // Template النادي
+    form
+  ).then(function() {
+
+    // 2️⃣ إرسال رسالة تأكيد للطالب
+    emailjs.sendForm(
+      "service_uu9ukvs",    // نفس Service
+      "template_7ga5vqi",   // Template الطالب
+      form
+    ).then(function() {
+      alert("✅ تم إرسال طلبك بنجاح، تم إرسال رسالة تأكيد إلى بريدك");
+      form.reset();
+    });
+
+  }).catch(function(error) {
+    alert("❌ حدث خطأ أثناء الإرسال");
+    console.log(error);
   });
 });
+</script>
 </script>
 </script>
 
 </body>
 
 </html>
+
 
 
 
