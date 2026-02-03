@@ -38,7 +38,7 @@
       font-weight: bold;
     }
 
-    input, select, textarea {
+    input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -87,7 +87,6 @@
 
   <!-- شعار النادي -->
   <div class="logo">
-    <!-- يمكنك لاحقًا استبدال src برابط صورة الشعار -->
     <img src="Design sans titre (1).png" alt="Quasar Science Club Logo">
   </div>
 
@@ -123,17 +122,14 @@
     <input type="email" name="email" required>
 
     <label>رابط صورة بطاقة الطالب (Google Drive)</label>
-<input 
-  type="url" 
-  name="student_card_link" 
-  placeholder="https://drive.google.com/..." 
-  required
->
-<div class="note">
-يرجى رفع صورة بطاقة الطالب على Google Drive ثم اختيار
-"Anyone with the link"
-ووضع الرابط هنا.
-</div>
+    <input type="url" name="student_card_link"
+           placeholder="https://drive.google.com/..." required>
+
+    <div class="note">
+      يرجى رفع صورة بطاقة الطالب على Google Drive ثم اختيار  
+      <b>Anyone with the link</b> ووضع الرابط هنا.
+    </div>
+
     <button type="submit">إرسال طلب الانخراط</button>
 
     <div class="note">
@@ -143,28 +139,7 @@
   </form>
 </div>
 
-<script>
-  (function(){
-    emailjs.init("PW4RU0KWI--zd-X6Y"); // Public Key
-  })();
-
-  document.getElementById("quasarForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      "service_uu9ukvs",      // Service ID
-      "template_06facfs",     // Template ID (إيميل النادي)
-      this
-    ).then(function() {
-      alert("✅ تم إرسال طلبك بنجاح، سيتم التواصل معك قريبًا");
-      document.getElementById("quasarForm").reset();
-    }, function(error) {
-      alert("❌ حدث خطأ أثناء الإرسال، حاول مرة أخرى");
-      console.log(error);
-    });
-  });
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
+<!-- JavaScript -->
 <script>
 (function(){
   emailjs.init("PW4RUOKWI--zd-X6Y"); // Public Key
@@ -175,37 +150,29 @@ document.getElementById("quasarForm").addEventListener("submit", function(e) {
 
   const form = this;
 
-  // 1️⃣ إرسال الطلب إلى النادي
+  // إرسال الطلب للنادي
   emailjs.sendForm(
-    "service_uu9ukvs",      // Service ID
-    "template_06facfs",     // Template النادي
+    "service_uu9ukvs",     // Service ID
+    "template_06facfs",    // Template النادي
     form
   ).then(function() {
 
-    // 2️⃣ إرسال رسالة تأكيد للطالب
-    emailjs.sendForm(
-      "service_uu9ukvs",    // نفس Service
+    // إرسال رسالة تأكيد للطالب
+    return emailjs.sendForm(
+      "service_uu9ukvs",
       "template_7ga5vqi",   // Template الطالب
       form
-    ).then(function() {
-      alert("✅ تم إرسال طلبك بنجاح، تم إرسال رسالة تأكيد إلى بريدك");
-      form.reset();
-    });
+    );
 
+  }).then(function() {
+    alert("✅ تم إرسال طلبك بنجاح، وتم إرسال رسالة تأكيد إلى بريدك");
+    form.reset();
   }).catch(function(error) {
     alert("❌ حدث خطأ أثناء الإرسال");
     console.log(error);
   });
 });
 </script>
-</script>
-</script>
 
 </body>
-
 </html>
-
-
-
-
-
