@@ -163,10 +163,36 @@
       console.log(error);
     });
   });
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("P4WRU0KWI--zd-X6Y"); // ✅ Public Key الصحيح
+})();
+
+document.getElementById("quasarForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // مهم جدًا
+
+  emailjs.sendForm(
+    "service_027g3tc",      // Service ID
+    "template_06facfs",     // Template ID
+    this
+  )
+  .then(function() {
+    alert("✅ تم إرسال طلبك بنجاح، سيتم التواصل معك قريبًا");
+    document.getElementById("quasarForm").reset();
+  })
+  .catch(function(error) {
+    alert("❌ خطأ تقني: " + error.text);
+    console.error("EmailJS Error:", error);
+  });
+});
+</script>
 </script>
 
 </body>
 
 </html>
+
 
 
