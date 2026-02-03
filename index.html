@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>التسجيل في نادي كوازار العلمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1c2d;
+      color: #fff;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #ffffff;
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0b5394;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #0b5394;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #073763;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .logo img {
+      max-width: 150px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- شعار النادي -->
+  <div class="logo">
+    <!-- يمكنك لاحقًا استبدال src برابط صورة الشعار -->
+    <img src="https://i.imgur.com/8QfQG5n.png" alt="Quasar Club Logo">
+  </div>
+
+  <h2>استمارة الانخراط في نادي كوازار العلمي</h2>
+
+  <form id="quasarForm">
+
+    <label>الاسم</label>
+    <input type="text" name="firstname" required>
+
+    <label>اللقب</label>
+    <input type="text" name="lastname" required>
+
+    <label>تاريخ الميلاد</label>
+    <input type="date" name="birthdate" required>
+
+    <label>التخصص</label>
+    <input type="text" name="specialty" required>
+
+    <label>السنة الدراسية</label>
+    <input type="text" name="year" required>
+
+    <label>المهارة</label>
+    <input type="text" name="skill">
+
+    <label>رقم تسجيل الطالب</label>
+    <input type="text" name="student_id" required>
+
+    <label>رقم الهاتف</label>
+    <input type="tel" name="phone" required>
+
+    <label>البريد الإلكتروني</label>
+    <input type="email" name="email" required>
+
+    <label>صورة بطاقة الطالب</label>
+    <input type="file" name="student_card" accept="image/*" required>
+
+    <button type="submit">إرسال طلب الانخراط</button>
+
+    <div class="note">
+      سيتم إرسال نسخة من الطلب إلى بريدك الإلكتروني.
+    </div>
+
+  </form>
+</div>
+
+<script>
+  (function(){
+    emailjs.init("PW4RUOKWI--zd-X6Y"); // Public Key
+  })();
+
+  document.getElementById("quasarForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_027g3tc",      // Service ID
+      "template_06facfs",     // Template ID (إيميل النادي)
+      this
+    ).then(function() {
+      alert("✅ تم إرسال طلبك بنجاح، سيتم التواصل معك قريبًا");
+      document.getElementById("quasarForm").reset();
+    }, function(error) {
+      alert("❌ حدث خطأ أثناء الإرسال، حاول مرة أخرى");
+      console.log(error);
+    });
+  });
+</script>
+
+</body>
+</html>
