@@ -152,14 +152,14 @@ document.getElementById("quasarForm").addEventListener("submit", function(e) {
 
   // إرسال الطلب للنادي
   emailjs.sendForm(
-    "service_uu9ukvs",     // Service ID
+    "service_ou9ukvs",     // Service ID
     "template_06facfs",    // Template النادي
     form
   ).then(function() {
 
     // إرسال رسالة تأكيد للطالب
     return emailjs.sendForm(
-      "service_uu9ukvs",
+      "service_ou9ukvs",
       "template_7ga5vqi",   // Template الطالب
       form
     );
@@ -176,3 +176,4 @@ document.getElementById("quasarForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
